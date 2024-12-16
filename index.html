@@ -58,8 +58,8 @@
   </style>
 </head>
 <body>
-  <!-- YouTube Video Embed (kerstmuziek) -->
-  <iframe id="kerstvideo" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&loop=1&playlist=jfKfPfyJRdk" allow="autoplay; encrypted-media" frameborder="0"></iframe>
+  <!-- YouTube Video Embed (kerstmuziek) met starttijd van 19 seconden -->
+  <iframe id="kerstvideo" src="https://www.youtube.com/embed/4N-yNyz7MYM?start=19&autoplay=1&loop=1&playlist=4N-yNyz7MYM" allow="autoplay; encrypted-media" frameborder="0"></iframe>
 
   <!-- Scherm met wachtwoord -->
   <div id="lockscreen">
@@ -81,6 +81,17 @@
         alert("Fout wachtwoord! Geniet nog even van de muziek 🎅");
       }
     }
+
+    // Voorkom dat de gebruiker de pagina verlaat
+    window.onbeforeunload = function() {
+        // Toon een waarschuwing
+        setTimeout(() => {
+            alert("Nee, je moet blijven luisteren naar kerstmuziek!");
+        }, 100);
+
+        // Dit zorgt ervoor dat de browser de pagina niet verlaat zonder bevestiging
+        return "Weet je zeker dat je deze pagina wilt verlaten? Je mist geweldige kerstmuziek!";
+    };
   </script>
 </body>
 </html>
