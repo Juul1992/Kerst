@@ -29,13 +29,6 @@
       font-size: 2rem;
       color: #d32f2f;
     }
-    input[type="password"] {
-      padding: 10px;
-      font-size: 1rem;
-      margin: 10px 0;
-      border: 1px solid #d32f2f;
-      border-radius: 5px;
-    }
     button {
       padding: 10px 20px;
       font-size: 1rem;
@@ -49,7 +42,7 @@
       background-color: #b71c1c;
     }
     iframe {
-      display: none; /* Verberg de YouTube-video totdat het wachtwoord correct is */
+      display: block; /* De video wordt meteen zichtbaar */
       width: 80%;
       height: 80%;
       border: none;
@@ -61,36 +54,11 @@
   <!-- YouTube Video Embed (kerstmuziek) met starttijd van 19 seconden -->
   <iframe id="kerstvideo" src="https://www.youtube.com/embed/4N-yNyz7MYM?start=19&autoplay=1&loop=1&playlist=4N-yNyz7MYM" allow="autoplay; encrypted-media" frameborder="0"></iframe>
 
-  <!-- Scherm met wachtwoord -->
-  <div id="lockscreen">
-    <h1>Wil je de kerstmuziek stoppen?</h1>
-    <p>Voer het geheime wachtwoord in om te stoppen:</p>
-    <input type="password" id="password" placeholder="Wachtwoord">
-    <button onclick="checkPassword()">Ontgrendel</button>
-    <p style="margin-top: 20px; font-size: 0.9rem; color: #555;">Hint: Het wachtwoord is kerst2024 🎄</p>
-  </div>
-
   <script>
-    // Controleer wachtwoord
-    function checkPassword() {
-      const password = document.getElementById("password").value;
-      if (password === "kerst2024") {
-        document.getElementById("lockscreen").style.display = "none";  // Verberg het wachtwoordscherm
-        document.getElementById("kerstvideo").style.display = "block";  // Laat de YouTube-video zien
-      } else {
-        alert("Fout wachtwoord! Geniet nog even van de muziek 🎅");
-      }
-    }
-
     // Voorkom dat de gebruiker de pagina verlaat
     window.onbeforeunload = function() {
-        // Toon een waarschuwing
-        setTimeout(() => {
-            alert("Nee, je moet blijven luisteren naar kerstmuziek!");
-        }, 100);
-
         // Dit zorgt ervoor dat de browser de pagina niet verlaat zonder bevestiging
-        return "Weet je zeker dat je deze pagina wilt verlaten? Je mist geweldige kerstmuziek!";
+        return "Je kunt deze magische kerstsfeer niet verlaten! 🎄";
     };
 
     // Voeg een herhaalde confirmatie toe om de kerstsfeer niet te verlaten
