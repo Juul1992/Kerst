@@ -51,10 +51,20 @@
   </style>
 </head>
 <body>
-  <!-- YouTube Video Embed (kerstmuziek) met starttijd van 19 seconden -->
-  <iframe id="kerstvideo" src="https://www.youtube.com/embed/4N-yNyz7MYM?start=19&autoplay=1&loop=1&playlist=4N-yNyz7MYM" allow="autoplay; encrypted-media" frameborder="0"></iframe>
+  <!-- YouTube Video Embed (kerstmuziek) met starttijd van 19 seconden en gemuteerd geluid -->
+  <iframe id="kerstvideo" src="https://www.youtube.com/embed/4N-yNyz7MYM?start=19&autoplay=1&loop=1&playlist=4N-yNyz7MYM&mute=1" allow="autoplay; encrypted-media" frameborder="0"></iframe>
 
   <script>
+    // Zorg ervoor dat het geluid na een korte vertraging wordt ingeschakeld
+    window.onload = function() {
+      const iframe = document.getElementById("kerstvideo");
+      const player = new YT.Player(iframe);
+
+      setTimeout(() => {
+        player.unMute();  // Zet het geluid aan na een korte vertraging
+      }, 1000);  // 1 seconde wachten voordat het geluid wordt ingeschakeld
+    };
+
     // Voorkom dat de gebruiker de pagina verlaat
     window.onbeforeunload = function() {
         // Dit zorgt ervoor dat de browser de pagina niet verlaat zonder bevestiging
@@ -68,5 +78,8 @@
         }
     }, 3000); // Dit gebeurt elke 3 seconden
   </script>
+
+  <!-- Voeg de YouTube Iframe API toe zodat we de video kunnen beheren -->
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
