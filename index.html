@@ -12,23 +12,21 @@
       padding: 0;
       background: linear-gradient(to bottom, #ffcccc, #ffffff);
     }
-    iframe {
-      display: block; /* De video wordt meteen zichtbaar */
-      width: 100%;
-      height: 100%;
-      border: none;
-      margin-top: 20px;
+    audio {
+      display: none; /* Audio-element is verborgen, zodat het niet zichtbaar is voor de gebruiker */
     }
   </style>
 </head>
 <body>
-  <!-- YouTube Video Embed (kerstmuziek) met starttijd van 19 seconden en automatisch afspelen -->
-  <iframe id="kerstvideo" src="https://www.youtube.com/embed/4N-yNyz7MYM?start=19&autoplay=1&loop=1&playlist=4N-yNyz7MYM" allow="autoplay; encrypted-media" frameborder="0"></iframe>
+  <!-- MP3-bestand afspelen van GitHub zonder dat de gebruiker het kan stoppen -->
+  <audio id="kerstmuziek" autoplay loop>
+    <source src="https://raw.githubusercontent.com/gebruikersnaam/repositorynaam/main/kerstmuziek.mp3" type="audio/mpeg">
+    Je browser ondersteunt geen audio.
+  </audio>
 
   <script>
     // Voorkom dat de gebruiker de pagina verlaat
     window.onbeforeunload = function() {
-        // Dit zorgt ervoor dat de browser de pagina niet verlaat zonder bevestiging
         return "Je kunt deze magische kerstsfeer niet verlaten! 🎄";
     };
 
