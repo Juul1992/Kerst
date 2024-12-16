@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kerstmuziek Prank</title>
+  <style>
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-align: center;
+    }
+    #lockscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .hidden {
+      display: none;
+    }
+    h1 {
+      color: #d9534f;
+    }
+    input {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #5bc0de;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #31b0d5;
+    }
+    iframe {
+      width: 80%;
+      height: 315px;
+      margin-top: 20px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="lockscreen">
+    <h1>Oeps! Je hebt kerstmuziek geactiveerd!</h1>
+    <p>Wil je de muziek stoppen? Voer het wachtwoord in:</p>
+    <input type="password" id="password" placeholder="Wachtwoord">
+    <button onclick="checkPassword()">Ontgrendel de muziek</button>
+  </div>
+
+  <!-- YouTube video -->
+  <iframe id="youtubePlayer" 
+          src="https://www.youtube.com/embed/4N-yNyz7MYM?autoplay=1&loop=1&playlist=4N-yNyz7MYM" 
+          allow="autoplay; encrypted-media">
+  </iframe>
+
+  <script>
+    // Functie om het wachtwoord te controleren
+    function checkPassword() {
+      const password = document.getElementById("password").value;
+      const correctPassword = "kerst2024"; // Het wachtwoord om de muziek te stoppen
+
+      if (password === correctPassword) {
+        document.getElementById("lockscreen").classList.add("hidden");
+        // Verberg de YouTube-player (optioneel, gebruiker kan altijd het venster sluiten)
+        document.getElementById("youtubePlayer").style.display = "none";
+      } else {
+        alert("Fout wachtwoord! Je moet blijven luisteren!");
+      }
+    }
+  </script>
+
+</body>
+</html>
