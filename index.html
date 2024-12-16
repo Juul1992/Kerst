@@ -92,6 +92,13 @@
         // Dit zorgt ervoor dat de browser de pagina niet verlaat zonder bevestiging
         return "Weet je zeker dat je deze pagina wilt verlaten? Je mist geweldige kerstmuziek!";
     };
+
+    // Voeg een herhaalde confirmatie toe om de kerstsfeer niet te verlaten
+    setInterval(() => {
+        if (!confirm("Wil je echt deze magische kerstsfeer verlaten?")) {
+            window.location.reload();  // Laad de pagina opnieuw als de gebruiker 'Annuleren' kiest
+        }
+    }, 3000); // Dit gebeurt elke 3 seconden
   </script>
 </body>
 </html>
