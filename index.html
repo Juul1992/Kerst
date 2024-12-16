@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kerstmuziek Prank</title>
+  <title>Kerstmuziek Grap</title>
   <style>
     body {
-      background-color: #f1f1f1;
       font-family: Arial, sans-serif;
-      color: #333;
       text-align: center;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffcccc, #ffffff);
     }
     #lockscreen {
       position: fixed;
@@ -17,73 +18,69 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 1000;
     }
-    .hidden {
-      display: none;
-    }
     h1 {
-      color: #d9534f;
+      font-size: 2rem;
+      color: #d32f2f;
     }
-    input {
+    input[type="password"] {
       padding: 10px;
-      margin-top: 10px;
-      font-size: 16px;
+      font-size: 1rem;
+      margin: 10px 0;
+      border: 1px solid #d32f2f;
+      border-radius: 5px;
     }
     button {
       padding: 10px 20px;
-      background-color: #5bc0de;
-      border: none;
+      font-size: 1rem;
+      background-color: #d32f2f;
       color: white;
-      font-size: 16px;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
     }
     button:hover {
-      background-color: #31b0d5;
+      background-color: #b71c1c;
     }
     iframe {
+      display: none; /* Verberg de YouTube-video totdat het wachtwoord correct is */
       width: 80%;
-      height: 315px;
-      margin-top: 20px;
+      height: 80%;
       border: none;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
+  <!-- YouTube Video Embed (kerstmuziek) -->
+  <iframe id="kerstvideo" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&loop=1&playlist=jfKfPfyJRdk" allow="autoplay; encrypted-media" frameborder="0"></iframe>
 
+  <!-- Scherm met wachtwoord -->
   <div id="lockscreen">
-    <h1>Oeps! Je hebt kerstmuziek geactiveerd!</h1>
-    <p>Wil je de muziek stoppen? Voer het wachtwoord in:</p>
+    <h1>Wil je de kerstmuziek stoppen?</h1>
+    <p>Voer het geheime wachtwoord in om te stoppen:</p>
     <input type="password" id="password" placeholder="Wachtwoord">
-    <button onclick="checkPassword()">Ontgrendel de muziek</button>
+    <button onclick="checkPassword()">Ontgrendel</button>
+    <p style="margin-top: 20px; font-size: 0.9rem; color: #555;">Hint: Het wachtwoord is kerst2024 🎄</p>
   </div>
 
-  <!-- YouTube video -->
-  <iframe id="youtubePlayer" 
-          src="https://www.youtube.com/embed/4N-yNyz7MYM?autoplay=1&loop=1&playlist=4N-yNyz7MYM" 
-          allow="autoplay; encrypted-media">
-  </iframe>
-
   <script>
-    // Functie om het wachtwoord te controleren
+    // Controleer wachtwoord
     function checkPassword() {
       const password = document.getElementById("password").value;
-      const correctPassword = "kerst2024"; // Het wachtwoord om de muziek te stoppen
-
-      if (password === correctPassword) {
-        document.getElementById("lockscreen").classList.add("hidden");
-        // Verberg de YouTube-player (optioneel, gebruiker kan altijd het venster sluiten)
-        document.getElementById("youtubePlayer").style.display = "none";
+      if (password === "kerst2024") {
+        document.getElementById("lockscreen").style.display = "none";  // Verberg het wachtwoordscherm
+        document.getElementById("kerstvideo").style.display = "block";  // Laat de YouTube-video zien
       } else {
-        alert("Fout wachtwoord! Je moet blijven luisteren!");
+        alert("Fout wachtwoord! Geniet nog even van de muziek 🎅");
       }
     }
   </script>
-
 </body>
 </html>
